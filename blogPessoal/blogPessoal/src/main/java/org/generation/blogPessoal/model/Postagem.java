@@ -12,12 +12,12 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "postagem") //cria uma tebela no banco
+@Entity //informa que esta model é uma entidade e que ela virará uma tabela no banco de dados
+@Table(name = "postagem") //define o nome da tabela no banco
 public class Postagem {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //transforma em Primary Key e auto-incremento
+	@Id //define o id como uma Primary Key
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto-incremento
 	private long id;
 	
 	@NotNull
@@ -28,7 +28,7 @@ public class Postagem {
 	@Size(min = 10, max = 500)
 	private String texto;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP) //define que o conteúdo do atributo data será pego automaticamente do próprio sistema
 	private Date data= new java.sql.Date(System.currentTimeMillis());
 	
 	
