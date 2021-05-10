@@ -17,13 +17,17 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository repository;
 	
-	public Usuario CadastrarUsuario(Usuario usuario){
+	public Optional<Usuario> CadastrarUsuario(Usuario usuario){
+		
+		if(repository.findByUsuario(usuario.getUsuario()).isPresent())
+			return null;
+		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
 		String senhaEncoder = encoder.encode(usuario.getSenha()); //codifica a senha e armazena na variável encoder
 		usuario.setSenha(senhaEncoder); //substitui a senha do objeto usuario pela senha criptografada
 		
-		return repository.save(usuario); //salva a senha no banco
+		return Optional.of(repository.save(usuario)); //salva a senha no banco
 	}
 	
 	public Optional<UserLogin> Logar(Optional<UserLogin> user){

@@ -1,5 +1,6 @@
 package org.generation.blogPessoal.seguranca;
 
+
 import java.util.Collection;
 
 import org.generation.blogPessoal.model.Usuario;
