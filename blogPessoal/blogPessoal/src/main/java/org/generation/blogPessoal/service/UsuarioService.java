@@ -39,7 +39,10 @@ public class UsuarioService {
 				String authHeader = "Basic " + new String(encodedAuth); //adiciona o prefixo Basic ao token
 				
 				user.get().setToken(authHeader);
+				user.get().setId(usuario.get().getId());
 				user.get().setNome(usuario.get().getNome());
+				user.get().setFoto(usuario.get().getFoto());
+				user.get().setTipo(usuario.get().getTipo());
 				
 				return user;
 			}
